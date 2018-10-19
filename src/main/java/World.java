@@ -20,7 +20,7 @@ public class World {
     }
 
     public boolean isOutOfThisWorld(Point point) {
-        return point.getX() > upperRightPoint.getX() || point.getY() > upperRightPoint.getY();
+        return point.getX() > upperRightPoint.getX() || point.getY() > upperRightPoint.getY() || point.getX() < 0 || point.getY() < 0;
     }
 
     public void addLostRobot(Robot robot) {

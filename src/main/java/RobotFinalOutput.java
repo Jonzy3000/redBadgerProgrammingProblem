@@ -1,5 +1,7 @@
 package main.java;
 
+import java.util.Objects;
+
 public class RobotFinalOutput {
     private final Point endPoint;
     private final CompassDirection endDirection;
@@ -33,5 +35,20 @@ public class RobotFinalOutput {
         }
 
         System.out.println("");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RobotFinalOutput that = (RobotFinalOutput) o;
+        return isLost == that.isLost &&
+                Objects.equals(endPoint, that.endPoint) &&
+                endDirection == that.endDirection;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(endPoint, endDirection, isLost);
     }
 }

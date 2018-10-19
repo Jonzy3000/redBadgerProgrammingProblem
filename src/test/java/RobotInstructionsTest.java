@@ -8,16 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RobotInstructionsTest {
-    final List<String> input = Arrays.asList(
-            "5 3",
-            "1 1 E",
-            "RFRFRFRF",
-            "3 2 N",
-            "FRRFLLFFRRFLL",
-            "0 3 W",
-            "LLFFFLFLFL"
-    );
-
     private final World world = new World(5, 3);
 
     @Test
@@ -72,7 +62,4 @@ public class RobotInstructionsTest {
         Assertions.assertEquals(output.getEndPoint(), new Point(3, 3));
         Assertions.assertTrue(output.isLost());
     }
-
-
-
 }
