@@ -1,11 +1,10 @@
 package test.java;
 
-import main.java.*;
-import org.junit.jupiter.api.Test;
+import main.java.InputReader;
+import main.java.Point;
+import main.java.World;
 import org.junit.jupiter.api.Assertions;
-
-import java.util.Arrays;
-import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class InputReaderTest {
 
