@@ -19,13 +19,9 @@ public class InputReader {
     }
 
     private void readMapSize(String string) {
-        List<Integer> coords = new ArrayList<>();
-        String[] numbers = string.split(" ");
-        for (String number : numbers) {
-            coords.add(Integer.valueOf(number));
-        }
+        Point upperRightPoint = this.getInitialCoords(string);
 
-        this.world = new World(coords.get(0), coords.get(1));
+        this.world = new World(upperRightPoint);
     }
 
     private CompassDirection getInitialDirection(String line) {
