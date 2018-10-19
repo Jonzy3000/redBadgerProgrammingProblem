@@ -73,4 +73,6 @@ public class RobotInstructionsTest {
         Assertions.assertTrue(output.isLost());
     }
 
+
+
 }

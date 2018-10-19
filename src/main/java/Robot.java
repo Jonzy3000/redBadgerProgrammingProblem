@@ -42,11 +42,14 @@ public class Robot {
             }
 
             Point nextPoint = currentPoint.move(currentDirection.move());
-            if (world.isOutOfThisWorld(nextPoint)) {
+            if (!world.isOutOfThisWorld(nextPoint)) {
+                currentPoint = nextPoint;
+                continue;
+            }
+
+            if (!world.hasRobotAlreadyBeenLostHere(this)) {
                 isLost = true;
                 break;
-            } else {
-                currentPoint = nextPoint;
             }
         }
 
