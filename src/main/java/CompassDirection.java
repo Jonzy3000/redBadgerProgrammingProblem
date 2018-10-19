@@ -31,22 +31,35 @@ public enum CompassDirection {
         return direction;
     }
 
+    private int getValidOrdinal(int ordinal) {
+        CompassDirection[] values = CompassDirection.values();
+
+        if (ordinal < 0) {
+            ordinal = values.length - 1;
+        } else if (ordinal >= values.length) {
+            ordinal = 0;
+        }
+
+        return ordinal;
+    }
+
     public CompassDirection getDirection(RobotInstruction instruction) {
         CompassDirection[] values = CompassDirection.values();
         int currentOrdinal = this.ordinal();
+
         switch (instruction) {
             case LEFT:
                 currentOrdinal -= 1;
-                currentOrdinal = currentOrdinal < 0 ? values.length - 1 : currentOrdinal;
-                return values[currentOrdinal];
+                break;
             case RIGHT:
                 currentOrdinal += 1;
-                currentOrdinal = currentOrdinal >= values.length ? 0 : currentOrdinal;
-                return values[currentOrdinal];
+                break;
             case FORWARD:
             default:
                 return this;
         }
+
+        return values[getValidOrdinal(currentOrdinal)];
     }
 
     public Point move() {
