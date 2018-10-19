@@ -12,18 +12,10 @@ public class App {
             List<Robot> robots = ir.getRobots();
             for (Robot robot : robots) {
                 RobotFinalOutput finalOutput = robot.processInstructions(world);
-                
-                System.out.print(
-                        finalOutput.getEndPoint().getX() + " " + finalOutput.getEndPoint().getY() + " "
-                                + finalOutput.getEndDirection().getDirection()
-                );
-
                 if (finalOutput.isLost()) {
-                    System.out.print(" LOST");
                     world.addLostRobot(robot);
                 }
-
-                System.out.println("");
+                finalOutput.printResults();
             }
         } catch (IOException e) {
             System.err.println(e.getMessage());

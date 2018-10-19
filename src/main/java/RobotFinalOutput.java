@@ -22,4 +22,16 @@ public class RobotFinalOutput {
     public boolean isLost() {
         return isLost;
     }
+
+    public void printResults() {
+        System.out.print(
+                this.getEndPoint().getX() + " " + this.getEndPoint().getY() + " " + this.getEndDirection().getDirection()
+        );
+
+        if (this.isLost()) {
+            System.out.print(" LOST");
+        }
+
+        System.out.println("");
+    }
 }
