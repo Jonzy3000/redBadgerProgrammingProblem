@@ -18,7 +18,7 @@ public enum RobotInstruction {
         }
     }
 
-    private RobotInstruction(String instruction) {
+    RobotInstruction(String instruction) {
         this.instruction = instruction;
     }
 
