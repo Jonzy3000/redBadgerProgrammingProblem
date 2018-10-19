@@ -58,15 +58,44 @@ public class BlackBoxTest {
         World world = ir.getWorld();
         List<Robot> robots = ir.getRobots();
 
+        List<RobotFinalOutput> expectedResults = Arrays.asList(
+                new RobotFinalOutput(
+                        new Point(10, 9),
+                        CompassDirection.EAST,
+                        true
+                ),
+                new RobotFinalOutput(
+                        new Point(10, 10),
+                        CompassDirection.NORTH,
+                        true
+                ),
+                new RobotFinalOutput(
+                        new Point(9, 8),
+                        CompassDirection.SOUTH,
+                        false
+                ),
+                new RobotFinalOutput(
+                        new Point(0, 0),
+                        CompassDirection.SOUTH,
+                        true
+                )
+        );
+
         List<RobotFinalOutput> actualResults = new ArrayList<>();
         for (Robot robot : robots) {
             RobotFinalOutput finalOutput = robot.processInstructions(world);
             if (finalOutput.isLost()) {
                 world.addLostRobot(robot);
             }
-
-            finalOutput.printResults();
             actualResults.add(finalOutput);
+        }
+
+        Assertions.assertEquals(actualResults.size(), expectedResults.size());
+        for (int i = 0; i < actualResults.size(); i++) {
+            RobotFinalOutput expected = expectedResults.get(i);
+            RobotFinalOutput actual = actualResults.get(i);
+
+            Assertions.assertEquals(expected, actual);
         }
     }
 }
